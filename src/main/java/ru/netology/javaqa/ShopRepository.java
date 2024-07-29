@@ -25,18 +25,20 @@ public class ShopRepository {
     public Product[] findAll() {
         return products;
     }
+
     public Product findById(int id) {
         for (Product product : products) {
-            if(id == product.getId()) {
+            if (id == product.getId()) {
                 return product;
             }
         }
         return null;
     }
+
     public void removeById(int id) {
-        if(findById(id)==null) {
+        if (findById(id) == null) {
             throw new NotFoundException(
-              "Element with id:" +id + " not found"
+                    "Element with id:" + id + " not found"
             );
         }
     }
@@ -45,7 +47,7 @@ public class ShopRepository {
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
-            if(product.getId() != id) {
+            if (product.getId() != id) {
                 tmp[copyToIndex] = product;
                 copyToIndex++;
             }
